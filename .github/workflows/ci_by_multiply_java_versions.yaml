@@ -2,11 +2,12 @@
 # https://docs.github.com/en/actions/quickstart
 
 name: Strong CI with multiply java versions
-on: [ push, pull_request, workflow_dispatch ]
+on:
+  workflow_dispatch:
 jobs:
   test:
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#choosing-github-hosted-runners
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     name: test by multiply java versions
 
@@ -34,3 +35,9 @@ jobs:
 
       - name: remove cola self maven install files
         run: rm -rf $HOME/.m2/repository/com/alibaba/{cola,craftsman}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+      fail-fast: false
