@@ -29,9 +29,9 @@ jobs:
 
     - run: scripts/integration_test
       env:
-        JAVA17_HOME: ${{ env.JAVA_HOME_17_ARM64 || env.JAVA_HOME_17_AARCH64 || env.JAVA_HOME_17_X64 }}
-        JAVA21_HOME: ${{ env.JAVA_HOME_21_ARM64 || env.JAVA_HOME_21_AARCH64 || env.JAVA_HOME_21_X64 }}
-        JAVA22_HOME: ${{ env.JAVA_HOME_22_ARM64 || env.JAVA_HOME_22_AARCH64 || env.JAVA_HOME_22_X64 }}
+        JAVA17_HOME: ${{ env.JAVA_HOME_17_ARM64 || env.JAVA_HOME_17_X64 }}
+        JAVA21_HOME: ${{ env.JAVA_HOME_21_ARM64 || env.JAVA_HOME_21_X64 }}
+        JAVA22_HOME: ${{ env.JAVA_HOME_22_ARM64 || env.JAVA_HOME_22_X64 }}
 
     - name: remove cola self maven install files
       run: rm -rf $HOME/.m2/repository/com/alibaba/{cola,craftsman}
